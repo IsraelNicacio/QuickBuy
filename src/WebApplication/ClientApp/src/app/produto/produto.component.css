@@ -1,0 +1,17 @@
+.form-signin {
+    width: 100%;
+    padding: 15px;
+    margin: auto;
+}
+
+.titulo {
+    color: #666;
+}
+
+.custom-file-input:lang(en)~.custom-file-label::after {
+    content: "Selecionar";
+}
+
+.invalid-feedback {
+    display: block;
+}

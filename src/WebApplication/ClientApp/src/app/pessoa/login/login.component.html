@@ -1,0 +1,41 @@
+<div class="text-center">
+    <form class="form-signin">
+        <img src="../../../assets/img/Login_Lock_128_128.png" alt="Login" class="mb-4">
+        <h1 class="h3 mb-3">Entre com o login</h1>
+
+        <label for="inputEmail" class="sr-only">Endereco de email</label>
+        <input class="form-control mb-3" name="email" type="email" id="inputEmail" placeholder="seu email" [(ngModel)]="pessoa.email" #email="ngModel" [ngClass]="
+        {
+            'is-invalid': email.invalid && (email.dirty || email.touched),
+            'is-valid': email.valid && (email.dirty || email.touched)
+        }" autofocus required>
+
+        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors.required">
+                Preenchimento obrigatorio
+            </div>
+            <div *ngIf="email.errors.email">
+                Email invalido
+            </div>
+        </div>
+
+        <label for="inputSenha " class="sr-only ">Senha</label>
+        <input class="form-control mb-3" name="password" type="password" id="inputSenha" placeholder="Senha" [(ngModel)]="pessoa.senha" #senha="ngModel" [ngClass]="{
+            'is-invalid': senha.invalid && (senha.dirty || senha.touched),
+            'is-valid': senha.valid && (senha.dirty || senha.touched)
+        }" required>
+
+        <div class="alert alert-danger" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+            <div *ngIf="senha.errors.required" role="status" aria-hidden="true">Senha nao informada</div>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block mb-3 " type="submit " (click)="entrar() " [disabled]="ativarSpinner">
+        <span class="spinner-border spinner-border-sm" *ngIf="ativarSpinner"></span>
+            Login
+        </button>
+
+        <div>Cadastrar novo <a [routerLink]="[ '/cadastro-pessoa' ]">Click aqui...</a></div>
+
+        <div class="alert alert-danger" *ngIf="mensagem">{{ mensagem }}</div>
+    </form>
+</div>

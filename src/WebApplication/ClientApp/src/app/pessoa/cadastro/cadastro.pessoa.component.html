@@ -1,0 +1,69 @@
+<div class="text-center">
+    <form class="form-signin">
+        <img src="../../../assets/img/User-Information_128_128.png" alt="Login" class="mb-4">
+        <h1 class="h3 mb-3">Cadastar nova pessoa</h1>
+
+        <label for="inputEmail" class="sr-only">Endereco de email</label>
+        <input class="form-control mb-3" name="email" type="email" id="inputEmail" placeholder="seu email" [(ngModel)]="pessoa.email" #email="ngModel" [ngClass]="
+        {
+            'is-invalid': email.invalid && (email.dirty || email.touched),
+            'is-valid': email.valid && (email.dirty || email.touched)
+        }" autofocus required>
+
+        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors.required">
+                Preenchimento obrigatorio
+            </div>
+            <div *ngIf="email.errors.email">
+                Email invalido
+            </div>
+        </div>
+
+        <label for="inputSenha " class="sr-only ">Senha</label>
+        <input class="form-control mb-3" name="password" type="password" id="inputSenha" placeholder="Senha" [(ngModel)]="pessoa.senha" #senha="ngModel" [ngClass]="{
+            'is-invalid': senha.invalid && (senha.dirty || senha.touched),
+            'is-valid': senha.valid && (senha.dirty || senha.touched)
+        }" required>
+
+        <div class="alert alert-danger" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+            <div *ngIf="senha.errors.required" role="status" aria-hidden="true">Senha nao informada</div>
+        </div>
+
+        <label for="inputNome" class="sr-only">Nome</label>
+        <input class="form-control mb-3" name="nome" type="nome" id="inputNome" placeholder="Nome" [(ngModel)]="pessoa.nome" #nome="ngModel" [ngClass]="
+        {
+            'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+            'is-valid': nome.valid && (nome.dirty || nome.touched)
+        }" autofocus required>
+
+        <div class="alert alert-danger" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+            <div *ngIf="nome.errors.required">
+                Nome e de preenchimento obrigatorio
+            </div>
+        </div>
+
+        <label for="inputSobreNome" class="sr-only">SobreNome</label>
+        <input class="form-control mb-3" name="sobreNome" type="sobreNome" id="inputSobreNome" placeholder="SobreNome" [(ngModel)]="pessoa.sobreNome" #sobreNome="ngModel" [ngClass]="
+        {
+            'is-invalid': sobreNome.invalid && (sobreNome.dirty || sobreNome.touched),
+            'is-valid': sobreNome.valid && (sobreNome.dirty || sobreNome.touched)
+        }" autofocus required>
+
+        <div class="alert alert-danger" *ngIf="sobreNome.invalid && (sobreNome.dirty || sobreNome.touched)">
+            <div *ngIf="sobreNome.errors.required">
+                SobreNome e de preenchimento obrigatorio
+            </div>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block mb-3 " type="submit " (click)="Cadastrar() " [disabled]="ativarSpinner">
+        <span class="spinner-border spinner-border-sm" *ngIf="ativarSpinner"></span>
+            Cadastrar
+        </button>
+        <div><a [routerLink]="[ '/login' ]">voltar</a></div>
+        <div class="alert alert-danger" *ngIf="mensagem">{{ mensagem }}</div>
+        <div class="alert alert-sucess" *ngIf="pessoaCadastrada">
+            Pessoa cadastrada com sucesso
+            <a class="alert-link" [routerLink]="[ '/login' ]">Click aqui para efetuar login...</a>
+        </div>
+    </form>
+</div>

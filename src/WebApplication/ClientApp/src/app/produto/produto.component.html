@@ -1,0 +1,45 @@
+<div class="text-center">
+    <form class="form-signin col-6">
+        <img src="../../assets/img/Product_Add_128_128.png" alt="produto" class="mb-4">
+        <h1 class="h3 md3">Cadastro de Produto</h1>
+
+        <label for="inputCodigoInterno" class="sr-only">Codigo do produto</label>
+        <input type="text" id="inputCodigoInterno" name="CodigoInterno" placeholder="Codigo do produto" class="form-control mb-3" maxlength="60" [(ngModel)]="produto.CodigoInterno" #CodigoInterno="ngModel" required>
+        <div class="invalid-feedback" *ngIf="CodigoInterno.invalid && (CodigoInterno.dirty || CodigoInterno.touched)">
+            <div *ngIf="CodigoInterno.errors.required"><b>Codigo do produto Preencimento Obrigatorio</b></div>
+        </div>
+
+        <label for="inputDescricao" class="sr-only">Descricao do produto</label>
+        <input type="text" id="inputDescricao" name="Descricao" placeholder="Descricao do produto" class="form-control mb-3" maxlength="120" [(ngModel)]="produto.Descricao" #Descricao="ngModel" required>
+        <div class="invalid-feedback" *ngIf="Descricao.invalid && (Descricao.dirty || Descricao.touched)">
+            <div *ngIf="Descricao.errors.required"><b>Descricao do produto Preencimento Obrigatorio</b></div>
+        </div>
+
+        <label for="inputUnidadeMedida" class="sr-only">Unidade Medida</label>
+        <input type="text" id="inputUnidadeMedida" name="UnidadeMedida" placeholder="Unidade Medida" class="form-control mb-3" maxlength="6" [(ngModel)]="produto.UnidadeMedida" #UnidadeMedida="ngModel" required>
+        <div class="invalid-feedback" *ngIf="UnidadeMedida.invalid && (UnidadeMedida.dirty || UnidadeMedida.touched)">
+            <div *ngIf="UnidadeMedida.errors.required"><b>Unidade Medida do produto Preencimento Obrigatorio</b></div>
+        </div>
+
+        <label for="inputValoUnitario" class="sr-only">Valo Unitario</label>
+        <input type="number" name="ValoUnitario" id="inputValoUnitario" placeholder="Valo Unitario" class="form-control mb-3" [(ngModel)]="produto.ValoUnitario" #ValoUnitario="ngModel" required>
+        <div class="invalid-feedback" *ngIf="ValoUnitario.invalid && (ValoUnitario.dirty || ValoUnitario.touched)">
+            <div *ngIf="ValoUnitario.errors.required"><b>Valo Unitario do produto Preencimento Obrigatorio</b></div>
+        </div>
+
+        <div class="custom-file mb-3">
+            <input type="file" class="custom-file-input" placeholder="Imagem" id="inputFile" (change)="inputChange($event.target.files)">
+            <label class="custom-file-label" for="inputFile">{{ produto.NomeArquivo }}</label>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block mb-3" type="submit" (click)="salvar()" [disabled]="ativarSpinner">
+            <span class="spinner-border spinner-border-sm" *ngIf="ativarSpinner"></span>
+            Cadastrar
+        </button>
+
+        <div class="alert alert-danger" *ngIf="mensagem">{{ mensagem }}</div>
+        <div class="alert alert-sucess" *ngIf="produtoCadastrado">
+            Produto cadastrado com sucesso
+        </div>
+    </form>
+</div>
