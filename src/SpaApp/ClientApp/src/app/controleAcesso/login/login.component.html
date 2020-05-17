@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-md-2">
+            <form class="form-signin">
+                <img class="mb-3" src="../../../assets/img/padlock.png" alt="" width="72" height="72">
+                <h1 class="h4 mb-3 font-weight-normal">Faça o login</h1>
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" id="inputEmail" name="email" class="form-control mb-2" placeholder="Informe o Email" required="" autofocus="" [(ngModel)]="pessoa.email">
+                <label for="inputPassword" class="sr-only">Senha</label>
+                <input type="password" id="inputPassword" name="password" class="form-control mb-2" placeholder="Senha" required="" [(ngModel)]="pessoa.senha">
+                <div class="checkbox mb-3 text-left">
+                    <label><input type="checkbox" value="remember-me"> Lembrar</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="entrar()">Entrar</button>
+            </form>
+            <div class="alert alert-primary" role="alert" *ngIf="usuarioAutenticado">
+                Usuario autenticado com sucesso!
+            </div>
+        </div>
+    </div>
+</div>
