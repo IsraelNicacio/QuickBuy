@@ -1,3 +1,4 @@
+import { ProdutoListaComponent } from './../../produtos/produto-lista/produto-lista.component';
 import { LoginComponent } from './../../controleAcesso/login/login.component';
 import { HomeComponent } from './../../home/home/home.component';
 import { NgModule } from '@angular/core';
@@ -6,7 +7,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'produto-lista', component: ProdutoListaComponent }
 ];
 
 @NgModule({
