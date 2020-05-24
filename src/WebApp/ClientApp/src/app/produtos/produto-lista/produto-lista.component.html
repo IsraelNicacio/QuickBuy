@@ -1,0 +1,131 @@
+<div class="row py-5">
+    <div class="col">
+        <div class="jumbotron text-center">
+            <div class="container">
+                <h1 class="display-4">Produtos</h1>
+            </div>
+        </div>
+        <!-- <input class="form-control shadow md-2" id="myInput" type="text" placeholder="Pesquisar..."> -->
+        <input class="form-control shadow mb-4" type="text" id="myInput" onkeyup="filterGrid()" placeholder="Pesquisar..." autofocus="">
+        <table id="dt-grid" class="table table-striped table-bordered shadow-lg" cellspacing="0" width="100%">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="th-sm">Código</th>
+                    <th class="th-sm">Descrição</th>
+                    <th class="th-sm">Unidade</th>
+                    <th class="th-sm">Quantidade</th>
+                    <th class="th-sm">Valor Unitário</th>
+                    <th class="th-sm">#</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+                <tr>
+                    <td>00001</td>
+                    <td>00001 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$320,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>00002</td>
+                    <td>00003 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$320,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>00003</td>
+                    <td>00003 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$320,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>00004</td>
+                    <td>00004 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$320,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>00005</td>
+                    <td>00005 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$320,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>00006</td>
+                    <td>Teste</td>
+                    <td>Unid</td>
+                    <td>61,0000</td>
+                    <td>$320,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>00007</td>
+                    <td>00007 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$320,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>00008</td>
+                    <td>00008 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$320,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>000088</td>
+                    <td>000088 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$320,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>000089</td>
+                    <td>000089 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$321,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>000090</td>
+                    <td>000090 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$322,800</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                    <td>000091</td>
+                    <td>000091 - System Architect</td>
+                    <td>kg</td>
+                    <td>61,0000</td>
+                    <td>$323,800</td>
+                    <td>###</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>Unidade</th>
+                    <th>Quantidade</th>
+                    <th>Valor Unitário</th>
+                    <th>#</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
