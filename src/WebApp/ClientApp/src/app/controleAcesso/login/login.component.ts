@@ -14,23 +14,29 @@ export class LoginComponent implements OnInit {
   public returnUrl : string;
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private pessoaServico: PessoaService) {
+  }
+
+  ngOnInit() {
     this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
     this.pessoa = new Pessoa();
   }
 
-  ngOnInit() {
-    
-  }
-
   entrar() {
 
-    // this.pessoaServico.verificarPessoa(this.pessoa)
-    // .subscribe(
-    //   data=>{},
-    //   err=>{
-    //     console.log(err)
-    //   }
-    // );
+    this.pessoaServico.verificarPessoa(this.pessoa)
+    .subscribe(
+      pessoa_json=>{
+        this.pessoaServico.pessoa = pessoa_json;
 
+        if (this.returnUrl == null) {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate([this.returnUrl]);
+        }
+      },
+      err=>{
+        console.log(err);
+      }
+    );
   }
 }
