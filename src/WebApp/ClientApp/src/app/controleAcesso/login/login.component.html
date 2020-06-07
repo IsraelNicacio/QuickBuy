@@ -41,7 +41,14 @@
             <!-- <div class="checkbox mb-3 text-left">
                     <label><input type="checkbox" value="remember-me"> Lembrar</label>
                 </div> -->
-            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="entrar()">Entrar</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="entrar()" [disabled]="enableSpinner">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="enableSpinner"></span>
+                Entrar
+            </button>
+
+            <div class="alert alert-light" role="alert" *ngIf="message">
+                {{message}}
+            </div>
         </form>
     </div>
 </div>
