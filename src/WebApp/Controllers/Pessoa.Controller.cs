@@ -56,17 +56,12 @@ namespace WebApp.Controllers
         {
             try
             {
-                //var pessoaReturn = this.pessoaRepository.RecuperarUsuarioAsync(pessoa.Email, pessoa.Senha);
+                var pessoaReturn = this.pessoaRepository.RecuperarUsuarioAsync(pessoa.Email, pessoa.Senha);
 
-                //Thread.Sleep(2000);
+                Thread.Sleep(2000);
 
-                //if (pessoaReturn != null)
-                //    return Ok(pessoaReturn);
-                //else
-                //    return BadRequest("Pessoa nao encontrada");
-
-                if (pessoa.Email == "israel.nicacio@gmail.com" && pessoa.Senha == "123456")
-                    return Ok(pessoa);
+                if (pessoaReturn != null)
+                    return Ok(pessoaReturn);
                 else
                     return BadRequest("Pessoa nao encontrada");
             }

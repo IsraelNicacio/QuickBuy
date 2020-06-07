@@ -19,18 +19,17 @@
                     </li>
                 </ul>
 
-                <a class="navbar-brand my-2 my-lg-0" [routerLink]="[ '/login' ]">Login</a>
-                <!-- <a class="navbar-brand my-2 my-lg-0" [routerLink]="[ '' ]" *ngIf="isAuthenticated()" (click)="logout()">Logout</a> -->
+                <a class="navbar-brand my-2 my-lg-0" [routerLink]="[ '/login' ]" *ngIf="!isAuthenticated()">Login</a>
 
-                <!-- <div class="nav-item dropdown" *ngIf="isAuthenticated()">
-                <a class="nav-link dropdown-toggle navbarDropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="nav-item dropdown" *ngIf="isAuthenticated()">
+                    <a class="nav-link dropdown-toggle navbarDropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Olá Querido(a) Cliente
             </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="isAuthenticated()">
-                    <a class="dropdown-item" href="#">Meus Pedidos</a>
-                    <a class="dropdown-item" [routerLink]="[ '' ]" (click)="logout()">Sair</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="isAuthenticated()">
+                        <a class="dropdown-item" href="#">Meus Pedidos</a>
+                        <a class="dropdown-item" [routerLink]="[ '' ]" (click)="logout()">Sair</a>
+                    </div>
                 </div>
-            </div> -->
             </div>
         </div>
     </nav>
