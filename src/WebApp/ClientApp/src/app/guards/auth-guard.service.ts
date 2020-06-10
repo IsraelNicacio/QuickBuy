@@ -1,3 +1,4 @@
+import { PessoaService } from 'src/app/services/pessoa/pessoa.service';
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -9,17 +10,15 @@ import { Statement } from '@angular/compiler';
 
 export class AuthGuardService implements CanActivate {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private pessoaService: PessoaService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    let isAuthenticated = sessionStorage.getItem("usuario_autenticado");
-    if (isAuthenticated == "1") {
+
+    if (this.pessoaService.pessoa_autenticada()) {
       return true;
     }
-    else {
-      this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } })
-      return false;
-    }
-  }
 
+    this.router.navigate(['/entrar'], { queryParams: { returnUrl: state.url } });
+    return false;
+  }
 }
