@@ -27,7 +27,8 @@
             </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="isAuthenticated()">
                         <a class="dropdown-item" href="#">Meus Pedidos</a>
-                        <a class="dropdown-item" [routerLink]="[ '' ]" (click)="logout()">Sair</a>
+                        <a class="dropdown-item" [routerLink]="[ '/cadastro-usuario']">Meu Cadastro</a>
+                        <a class="dropdown-item" (click)="logout()">Sair</a>
                     </div>
                 </div>
             </div>
