@@ -11,18 +11,12 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
   {
     path: 'produto-lista', component: ProdutoListaComponent,
     canActivate: [AuthGuardService],
     children: [
       { path: 'produto-lista', component: ProdutoListaComponent }
-    ]
-  },
-  {
-    path:'cadastro-usuario', component: CadastroUsuarioComponent,
-    canActivate:[AuthGuardService],
-    children:[
-      {path:'cadastro-usuario', component:CadastroUsuarioComponent}
     ]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' }

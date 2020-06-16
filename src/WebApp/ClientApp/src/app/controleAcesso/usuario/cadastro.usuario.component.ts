@@ -1,5 +1,5 @@
+import { Pessoa } from 'src/app/modelos/pessoa';
 import { PessoaService } from './../../services/pessoa/pessoa.service';
-import { Pessoa } from './../../modelos/pessoa';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -18,14 +18,17 @@ export class CadastroUsuarioComponent implements OnInit {
         this.pessoa = new Pessoa();
     }
 
-    public Cadastrar() {
-        this.pessoaServico.cadastrarPessoa(this.pessoa)
-            .subscribe(
-                data => {},
-                err => {
-                    console.log(err)
-                }
-            );
+    public cadastrar() {
+
+        alert("Nome: " + this.pessoa.nome + "\nSobreNome: " + this.pessoa.sobreNome + "\nEmail: " + this.pessoa.email + "\nSenha: " + this.pessoa.senha);
+
+        // this.pessoaServico.cadastrarPessoa(this.pessoa)
+        //     .subscribe(
+        //         data => {},
+        //         err => {
+        //             console.log(err)
+        //         }
+        //     );
     }
 
 }

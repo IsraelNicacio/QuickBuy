@@ -9,5 +9,47 @@
 </div>
 
 <div class="row justify-content-md-center">
-    <div class="col-md-3"></div>
+    <div class="col-md-5">
+        <form class="needs-validation" novalidate="">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">Nome</label>
+                    <input type="text" id="firstName" name="firstName" class="form-control" [ngClass]="
+                    {
+                        'is-invalid': firstName.invalid && (firstName.dirty || firstName.touched),
+                        'is-valid': firstName.valid && (firstName.dirty || firstName.touched)
+                    }" [(ngModel)]="pessoa.nome" #firstName="ngModel" required autofocus="">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Sobrenome</label>
+                    <input type="text" name="lastName" id="lastName" class="form-control" [ngClass]="
+                    {
+                        'is-invalid': lastName.invalid && (lastName.dirty || lastName.touched),
+                        'is-valid': lastName.valid && (lastName.dirty || lastName.touched)
+                    }" [(ngModel)]="pessoa.sobreNome" #lastName="ngModel" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="seu.email@exemplo.com.br" [ngClass]="
+                {
+                    'is-invalid': email.invalid && (email.dirty || email.touched),
+                    'is-valid': email.valid && (email.dirty || email.touched)
+                }" [(ngModel)]="pessoa.email" #email="ngModel" email required>
+            </div>
+
+            <div class="mb-3">
+                <label for="pass" class="sr-only">Criar Senha</label>
+                <input type="password" name="pass" id="pass" class="form-control" [ngClass]="
+                    {
+                        'is-invalid': pass.invalid && (pass.dirty || pass.touched),
+                        'is-valid': pass.valid && (pass.dirty || pass.touched)
+                    }" [(ngModel)]="pessoa.senha" #pass="ngModel" password required>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="cadastrar()">Cadastrar</button>
+        </form>
+    </div>
 </div>
