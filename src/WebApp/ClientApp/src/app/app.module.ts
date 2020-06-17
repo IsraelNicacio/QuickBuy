@@ -1,3 +1,4 @@
+import { ProdutoComponent } from './produtos/produto.component';
 import { CadastroUsuarioComponent } from './controleAcesso/usuario/cadastro.usuario.component';
 import { ProdutoService } from './services/produto/produto.service';
 import { PessoaService } from './services/pessoa/pessoa.service';
@@ -21,7 +22,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     LoginComponent,
     ProdutoListaComponent,
     NavMenuComponent,
-    CadastroUsuarioComponent
+    CadastroUsuarioComponent,
+    ProdutoComponent
   ],
   imports: [
     BrowserModule,
