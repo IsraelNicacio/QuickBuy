@@ -16,6 +16,7 @@ export class ProdutoComponent implements OnInit {
     }
 
     public cadastrar(){
+        
         this.produtoServico.Inserir(this.produto)
         .subscribe(
             data => {
