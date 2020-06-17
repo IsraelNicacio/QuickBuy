@@ -1,3 +1,5 @@
+import { ProdutoComponent } from './produtos/produto.component';
+import { CadastroUsuarioComponent } from './controleAcesso/usuario/cadastro.usuario.component';
 import { ProdutoService } from './services/produto/produto.service';
 import { PessoaService } from './services/pessoa/pessoa.service';
 import { AuthGuardService } from './guards/auth-guard.service';
@@ -12,7 +14,6 @@ import { LoginComponent } from './controleAcesso/login/login.component';
 import { AppRoutingModule } from './routes/app-routing/app-routing.module';
 import { ProdutoListaComponent } from './produtos/produto-lista/produto-lista.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { UsuarioComponent } from './usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UsuarioComponent } from './usuario/usuario.component';
     LoginComponent,
     ProdutoListaComponent,
     NavMenuComponent,
-    UsuarioComponent
+    CadastroUsuarioComponent,
+    ProdutoComponent
   ],
   imports: [
     BrowserModule,
