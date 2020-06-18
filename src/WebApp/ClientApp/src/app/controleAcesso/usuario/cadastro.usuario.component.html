@@ -32,7 +32,7 @@
 
             <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="seu.email@exemplo.com.br" [ngClass]="
+                <input type="email" name="email" id="email" class="form-control" [ngClass]="
                 {
                     'is-invalid': email.invalid && (email.dirty || email.touched),
                     'is-valid': email.valid && (email.dirty || email.touched)
@@ -49,7 +49,9 @@
             </div>
 
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="cadastrar()">Cadastrar</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="cadastrar()" [disabled]="ativarSpinner">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
+                Cadastrar</button>
 
             <div class="alert alert-success mt-2" *ngIf="pessoaCadastrada">
                 <div class="row justify-content-md-center">
@@ -57,7 +59,7 @@
                 </div>
             </div>
 
-            <div class="alert alert-danger mt-2" *ngIf="!pessoaCadastrada">
+            <div class="alert alert-danger mt-2" *ngIf="mensagem">
                 <div class="row justify-content-md-center">
                     {{mensagem}}
                 </div>

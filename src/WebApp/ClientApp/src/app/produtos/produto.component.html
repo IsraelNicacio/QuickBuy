@@ -39,7 +39,7 @@
                     'is-invalid': UnidadeMedida.invalid && (UnidadeMedida.dirty || UnidadeMedida.touched),
                     'is-valid': UnidadeMedida.valid && (UnidadeMedida.dirty || UnidadeMedida.touched)
                     }
-                    " [(ngModel)]="produto.UnidadeMedida" #UnidadeMedida="ngModel" style="text-transform: uppercase;" maxlength="6" required>
+                    " [(ngModel)]="produto.UnidadeMedida" #UnidadeMedida="ngModel" style="text-transform: uppercase;" maxlength="20" required>
                 </div>
                 <div class="col-md-9 mb-3">
                     <label for="valorUnitario">Valor Unitário</label>
@@ -54,8 +54,8 @@
             <div class="mb-3">
                 <label for="enviarArquivo">Enviar Arquivo</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFileLang" lang="pt">
-                    <label class="custom-file-label" for="customFileLang">Selecionar Arquivo</label>
+                    <input type="file" class="custom-file-input" id="enviarArquivo" lang="pt" (click)="inputChange($event.target.files)">
+                    <label class="custom-file-label" for="enviarArquivo">Selecionar Arquivo</label>
                 </div>
             </div>
 
