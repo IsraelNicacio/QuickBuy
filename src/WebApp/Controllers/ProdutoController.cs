@@ -47,7 +47,7 @@ namespace WebApp.Controllers
                 //Verifica se existe produto cadastrado
                 var produtoResult = this.produtoAsyncRepository.RecuperarCodigoProdutoAsync(produto.CodigoInterno);
                 if (produtoResult != null)
-                    return BadRequest("Produto com mesmo código, já cadastrado na base de dados");
+                    return BadRequest("Produto com mesmo código já cadastrado na base de dados");
 
                 if(produto.Id > 0)
                     this.produtoAsyncRepository.AdicionarAsync(produto);

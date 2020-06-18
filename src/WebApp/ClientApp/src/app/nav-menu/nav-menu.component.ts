@@ -1,3 +1,4 @@
+import { Pessoa } from './../modelos/pessoa';
 import { PessoaService } from 'src/app/services/pessoa/pessoa.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
@@ -8,7 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  isExpanded = false;
+  public isExpanded = false;
+
+  public get pessoa() : Pessoa {
+    return this.pessoaService.pessoa;
+  }
 
   constructor(private router: Router, private pessoaService: PessoaService) {
   }
@@ -29,5 +34,4 @@ export class NavMenuComponent {
     this.pessoaService.limpa_sessao();
     this.router.navigate(['/']);
   }
-  
 }

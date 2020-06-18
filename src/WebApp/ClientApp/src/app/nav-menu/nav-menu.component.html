@@ -23,9 +23,7 @@
                 <a class="navbar-brand my-2 my-lg-0" [routerLink]="[ '/login' ]" *ngIf="!isAuthenticated()">Login</a>
 
                 <div class="nav-item dropdown" *ngIf="isAuthenticated()">
-                    <a class="nav-link dropdown-toggle navbarDropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Olá Querido(a) Cliente
-            </a>
+                    <a class="nav-link dropdown-toggle navbarDropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{pessoa.nome}}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="isAuthenticated()">
                         <a class="dropdown-item" href="#">Meus Pedidos</a>
                         <a class="dropdown-item" [routerLink]="[ '/cadastro-usuario']">Meu Cadastro</a>

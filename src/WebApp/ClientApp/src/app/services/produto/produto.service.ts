@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ProdutoService implements OnInit {
 
+
   private baseUrl: string;
   private _produto: Produto[];
 
@@ -22,7 +23,7 @@ export class ProdutoService implements OnInit {
     throw new Error("Method not implemented.");
   }
 
-  public RecuperarColecaoProdutos() : Observable<Produto[]>{
+  public RecuperarColecaoProdutos(): Observable<Produto[]> {
     return this.http.get<Produto[]>(this.baseUrl + "api/produto");
   }
 
@@ -37,5 +38,11 @@ export class ProdutoService implements OnInit {
   // public Deletar(produto: Produto): Observable<Produto> {
 
   // }
+
+  public enviarArquivo(arquivoSelecionado: File): Observable<boolean> {
+    const formData: FormData = new FormData();
+    formData.append("arquivoEnviado", arquivoSelecionado, arquivoSelecionado.name);
+    return this.http.post<boolean>(this.baseUrl + "api/produto/enviarArquivo", formData);
+  }
 
 }
