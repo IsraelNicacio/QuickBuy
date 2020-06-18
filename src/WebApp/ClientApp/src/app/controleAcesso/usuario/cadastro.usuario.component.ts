@@ -10,6 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class CadastroUsuarioComponent implements OnInit {
 
     public pessoa: Pessoa;
+    public ativarSpinner: boolean;
+    public mensagem: string;
+    public pessoaCadastrada: boolean;
 
     constructor(private pessoaServico: PessoaService) {
     }
@@ -19,16 +22,21 @@ export class CadastroUsuarioComponent implements OnInit {
     }
 
     public cadastrar() {
+this.ativarSpinner = true;
 
-        alert("Nome: " + this.pessoa.nome + "\nSobreNome: " + this.pessoa.sobreNome + "\nEmail: " + this.pessoa.email + "\nSenha: " + this.pessoa.senha);
-
-        // this.pessoaServico.cadastrarPessoa(this.pessoa)
-        //     .subscribe(
-        //         data => {},
-        //         err => {
-        //             console.log(err)
-        //         }
-        //     );
+        this.pessoaServico.cadastrarPessoa(this.pessoa)
+            .subscribe(
+                data => {
+                    this.pessoaCadastrada = true;
+                    this.mensagem = "";
+                    this.ativarSpinner = false;
+                },
+                err => {
+                    this.mensagem = err.error;
+                    console.log(this.mensagem)
+                    this.ativarSpinner = false;
+                }
+            );
     }
 
 }
