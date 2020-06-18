@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace WebApp.Controllers
 {
@@ -46,13 +47,13 @@ namespace WebApp.Controllers
             {
                 //Verifica se existe produto cadastrado
                 var produtoResult = this.produtoAsyncRepository.RecuperarCodigoProdutoAsync(produto.CodigoInterno);
+
+                Thread.Sleep(2000);
+
                 if (produtoResult != null)
                     return BadRequest("Produto com mesmo código já cadastrado na base de dados");
 
-                if(produto.Id > 0)
-                    this.produtoAsyncRepository.AdicionarAsync(produto);
-                else
-                    this.produtoAsyncRepository.AdicionarAsync(produto);
+                this.produtoAsyncRepository.AdicionarAsync(produto);
 
                 return Created("api/produto", produto);
             }

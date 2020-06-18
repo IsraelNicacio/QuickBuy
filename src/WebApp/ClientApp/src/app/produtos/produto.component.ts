@@ -1,7 +1,7 @@
 import { ProdutoService } from './../services/produto/produto.service';
 import { Produto } from './../modelos/produto';
-import { core } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
     selector: "app-produto",
@@ -15,8 +15,9 @@ export class ProdutoComponent implements OnInit {
     public ativarSpinner: boolean;
     public mensagem: string;
     public produtoCadastrado: boolean;
+    public returnUrl: any;
 
-    constructor(private produtoServico: ProdutoService) {
+    constructor(private router: Router, private produtoServico: ProdutoService) {
     }
 
     public inputChange(files: FileList) {
@@ -25,31 +26,31 @@ export class ProdutoComponent implements OnInit {
 
         this.arquivoSelecionado = files.item(0);
         this.produtoServico.enviarArquivo(this.arquivoSelecionado)
-        .subscribe(
-            data => {
-                console.log(data);
-            },
-            err => {
-                console.log(err.error)
-            }
-        );
+            .subscribe(
+                data => {
+                    console.log(data);
+                },
+                err => {
+                    console.log(err.error)
+                }
+            );
     }
 
     public cadastrar() {
 
-        this.ativarSpinner = false;
+        this.ativarSpinner = true;
 
         this.produtoServico.Inserir(this.produto)
             .subscribe(
                 data => {
-                    this.ativarSpinner = true;
+                    this.ativarSpinner = false;
                     this.produtoCadastrado = true;
-                    console.log(data);
+                    this.mensagem = "";
                 },
                 err => {
                     console.log(err.error);
                     this.ativarSpinner = false;
-                    this.mensagem = err.error
+                    this.mensagem = err.error;
                 }
             );
     }

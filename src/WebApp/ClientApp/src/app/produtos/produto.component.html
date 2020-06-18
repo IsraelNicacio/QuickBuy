@@ -60,7 +60,26 @@
             </div>
 
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="cadastrar()">Cadastrar</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="cadastrar()" [disabled]="ativarSpinner">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
+                Cadastrar
+            </button>
+
+            <div class="alert alert-success mt-2" *ngIf="produtoCadastrado">
+                <div class="row justify-content-md-center">
+                    <p>
+                        Produto cadastrado com sucesso
+                        <a [routerLink]="[ '/produto-lista' ]">Ir para Lista de Produtos</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="alert alert-danger mt-2" *ngIf="mensagem">
+                <div class="row justify-content-md-center">
+                    {{mensagem}}
+                </div>
+            </div>
+
         </form>
     </div>
 </div>
