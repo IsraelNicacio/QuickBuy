@@ -52,8 +52,10 @@ namespace WebApp.Controllers
 
                 if (produtoResult != null)
                     return BadRequest("Produto com mesmo código já cadastrado na base de dados");
-
-                this.produtoAsyncRepository.AdicionarAsync(produto);
+                else if(produto.Id > 0)
+                    this.produtoAsyncRepository.AtualizarAsync(produto);
+                else
+                    this.produtoAsyncRepository.AdicionarAsync(produto);
 
                 return Created("api/produto", produto);
             }
@@ -69,6 +71,9 @@ namespace WebApp.Controllers
             try
             {
                 this.produtoAsyncRepository.RemoverAsync(produto);
+
+                Thread.Sleep(2000);
+
                 return Json(this.produtoAsyncRepository.RecuperarColecao());
             }
             catch (Exception ex)

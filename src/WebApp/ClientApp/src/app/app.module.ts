@@ -4,7 +4,7 @@ import { ProdutoService } from './services/produto/produto.service';
 import { PessoaService } from './services/pessoa/pessoa.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 
@@ -14,6 +14,10 @@ import { LoginComponent } from './controleAcesso/login/login.component';
 import { AppRoutingModule } from './routes/app-routing/app-routing.module';
 import { ProdutoListaComponent } from './produtos/produto-lista/produto-lista.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     FormsModule
   ],
   providers: [
-    AuthGuardService, PessoaService, ProdutoService
+    AuthGuardService,
+    PessoaService,
+    ProdutoService,
+    { provide: LOCALE_ID, useValue: 'pt' }
   ],
   bootstrap: [AppComponent]
 })

@@ -35,14 +35,14 @@ export class ProdutoService implements OnInit {
 
   // }
 
-  // public Deletar(produto: Produto): Observable<Produto> {
+  public excluirProduto(produto: Produto): Observable<Produto[]> {
+    return this.http.post<Produto[]>(this.baseUrl + "api/produto/excluir", JSON.stringify(produto), { headers: this.headers });
+  }
 
-  // }
-
-  public enviarArquivo(arquivoSelecionado: File): Observable<boolean> {
+  public enviarArquivo(arquivo: File): Observable<string> {
     const formData: FormData = new FormData();
-    formData.append("arquivoEnviado", arquivoSelecionado, arquivoSelecionado.name);
-    return this.http.post<boolean>(this.baseUrl + "api/produto/enviarArquivo", formData);
+    formData.append("arquivoEnviado", arquivo, arquivo.name)
+    return this.http.post<string>(this.baseUrl + "api/produto/enviarArquivo", formData);
   }
 
 }
