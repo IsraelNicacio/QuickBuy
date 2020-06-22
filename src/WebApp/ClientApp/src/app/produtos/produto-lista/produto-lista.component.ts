@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { Produto } from './../../modelos/produto';
 import { ProdutoService } from './../../services/produto/produto.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-produto-lista',
@@ -12,6 +13,7 @@ export class ProdutoListaComponent implements OnInit {
   public produtos: Produto[];
   public enableSpinner: boolean;
   public message: string;
+  public destroyed = new Subject<any>();
 
   constructor(private produtoservico: ProdutoService, private router: Router) {
 
@@ -38,6 +40,7 @@ export class ProdutoListaComponent implements OnInit {
         .subscribe(
           produtosJson => {
             this.produtos = produtosJson;
+            this.ngOnInit();
           },
           err => {
             console.log(err.erros);
@@ -48,12 +51,11 @@ export class ProdutoListaComponent implements OnInit {
   }
 
   public editarProduto(produto: Produto) {
-    sessionStorage.setItem("ProdutoSession", JSON.stringify(produto));
+    sessionStorage.setItem("produtoSession", JSON.stringify(produto));
     this.router.navigate(["/produto"]);
   }
 
   ngOnInit() {
-
+    this.router.navigate(["produto-lista"]);
   }
-
 }

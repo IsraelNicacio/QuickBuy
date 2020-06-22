@@ -104,7 +104,7 @@ namespace WebApp.Controllers
             var fileName    = formFile.FileName;
             var extensao    = fileName.Split(".").Last();
             var arryName    = Path.GetFileNameWithoutExtension(fileName).Take(10).ToArray();
-            var newFileName = $"{new string(arryName).Replace(" ", "-")}{DateTime.Now.Year}{DateTime.Now.Month.ToString().PadLeft(2,'0')}{DateTime.Now.Day.ToString().PadLeft(2, '0')}.{extensao}";
+            var newFileName = $"{DateTime.Now.ToString("yyyyMMddHHmmss")}_{new string(arryName).Replace(" ", "-")}.{extensao}";
             var pathFile    = $"{this.hostEnvironment.ContentRootPath}\\wwwroot\\arquivos";
             //Retorna formatacao
             return $"{pathFile}\\{newFileName}";

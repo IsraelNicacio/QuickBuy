@@ -10,45 +10,38 @@
 
 <div class="row justify-content-md-center">
     <div class="col-md-5">
-        <form class="needs-validation" novalidate="">
+        <form class="needs-validation">
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <label for="CodigoInterno">Codigo Produto</label>
-                    <input type="text" name="CodigoInterno" id="CodigoInterno" class="form-control" [ngClass]="
-                    {
-                        'is-invalid': CodigoInterno.invalid && (CodigoInterno.dirty || CodigoInterno.touched),
-                        'is-valid': CodigoInterno.valid && (CodigoInterno.dirty || CodigoInterno.touched)
-                    }
-                    " [(ngModel)]="produto.CodigoInterno" #CodigoInterno="ngModel" maxlength="60" required>
+                    <label for="inputCodigoInterno">Código Produto</label>
+                    <input type="text" id="inputCodigoInterno" name="CodigoInterno" placeholder="Codigo do produto" class="form-control" maxlength="60" [(ngModel)]="produto.codigoInterno" #CodigoInterno="ngModel" required>
+
+                    <div class="invalid-feedback" *ngIf="CodigoInterno.invalid && (CodigoInterno.dirty || CodigoInterno.touched)">
+                        <div *ngIf="CodigoInterno.errors.required"><b>Codigo do produto Preencimento Obrigatorio</b></div>
+                    </div>
                 </div>
                 <div class="col-md-9 mb-3">
-                    <label for="Descricao">Descrição Produto</label>
-                    <input type="text" name="Descricao" id="Descricao" class="form-control" [ngClass]="
-                    {
-                    'is-invalid': Descricao.invalid && (Descricao.dirty || Descricao.touched),
-                    'is-valid': Descricao.valid && (Descricao.dirty || Descricao.touched)
-                    }
-                    " [(ngModel)]="produto.Descricao" #Descricao="ngModel" maxlength="60" required>
+                    <label for="inputDescricao">Descrição Produto</label>
+                    <input type="text" id="inputDescricao" name="Descricao" placeholder="Descricao do produto" class="form-control" maxlength="120" [(ngModel)]="produto.descricao" #Descricao="ngModel" required>
+                    <div class="invalid-feedback" *ngIf="Descricao.invalid && (Descricao.dirty || Descricao.touched)">
+                        <div *ngIf="Descricao.errors.required"><b>Descricao do produto Preencimento Obrigatorio</b></div>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <label for="UnidadeMedida">Unidade Medida</label>
-                    <input type="text" name="UnidadeMedida" id="UnidadeMedida" class="form-control" [ngClass]="
-                    {
-                    'is-invalid': UnidadeMedida.invalid && (UnidadeMedida.dirty || UnidadeMedida.touched),
-                    'is-valid': UnidadeMedida.valid && (UnidadeMedida.dirty || UnidadeMedida.touched)
-                    }
-                    " [(ngModel)]="produto.UnidadeMedida" #UnidadeMedida="ngModel" style="text-transform: uppercase;" maxlength="20" required>
+                    <label for="inputUnidadeMedida">Unidade Medida</label>
+                    <input type="text" id="inputUnidadeMedida" name="UnidadeMedida" placeholder="Unidade Medida" class="form-control" maxlength="20" [(ngModel)]="produto.unidadeMedida" #UnidadeMedida="ngModel" required>
+                    <div class="invalid-feedback" *ngIf="UnidadeMedida.invalid && (UnidadeMedida.dirty || UnidadeMedida.touched)">
+                        <div *ngIf="UnidadeMedida.errors.required"><b>Unidade Medida do produto Preencimento Obrigatorio</b></div>
+                    </div>
                 </div>
                 <div class="col-md-9 mb-3">
-                    <label for="ValoUnitario">Valor Unitário</label>
-                    <input type="number" name="ValoUnitario" id="ValoUnitario" class="form-control" [ngClass]="
-                    {
-                    'is-invalid': ValoUnitario.invalid && (ValoUnitario.dirty || ValoUnitario.touched),
-                    'is-valid': ValoUnitario.valid && (ValoUnitario.dirty || ValoUnitario.touched)
-                    }
-                    " [(ngModel)]="produto.ValoUnitario" #ValoUnitario="ngModel" min="0,00" step="any" placeholder="0,00" required>
+                    <label for="inputValoUnitario">Valor Unitário</label>
+                    <input type="number" name="ValoUnitario" id="inputValoUnitario" placeholder="Valo Unitario" class="form-control" [(ngModel)]="produto.valoUnitario" #ValoUnitario="ngModel" required>
+                    <div class="invalid-feedback" *ngIf="ValoUnitario.invalid && (ValoUnitario.dirty || ValoUnitario.touched)">
+                        <div *ngIf="ValoUnitario.errors.required"><b>Valo Unitario do produto Preencimento Obrigatorio</b></div>
+                    </div>
                 </div>
             </div>
             <div class="mb-3">

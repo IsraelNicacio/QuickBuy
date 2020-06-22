@@ -1,3 +1,4 @@
+import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
 import { ProdutoComponent } from './produtos/produto.component';
 import { CadastroUsuarioComponent } from './controleAcesso/usuario/cadastro.usuario.component';
 import { ProdutoService } from './services/produto/produto.service';
@@ -16,6 +17,7 @@ import { ProdutoListaComponent } from './produtos/produto-lista/produto-lista.co
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { TruncateModule } from 'ng2-truncate';
 
 registerLocaleData(localePt, 'pt');
 
@@ -27,13 +29,15 @@ registerLocaleData(localePt, 'pt');
     ProdutoListaComponent,
     NavMenuComponent,
     CadastroUsuarioComponent,
-    ProdutoComponent
+    ProdutoComponent,
+    LojaPesquisaComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    TruncateModule
   ],
   providers: [
     AuthGuardService,

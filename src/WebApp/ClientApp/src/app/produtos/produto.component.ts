@@ -21,23 +21,22 @@ export class ProdutoComponent implements OnInit {
     }
 
     public inputChange(files: FileList) {
-
-        console.log(files.item(0));
-
         this.arquivoSelecionado = files.item(0);
         this.produtoServico.enviarArquivo(this.arquivoSelecionado)
             .subscribe(
-                data => {
-                    console.log(data);
+                nomeArquivo => {
+                    this.produto.NomeArquivo = nomeArquivo;
                 },
                 err => {
-                    console.log(err.error)
+                    console.log(err);
+                    this.mensagem = err.error;
                 }
             );
     }
 
     public cadastrar() {
 
+        sessionStorage.setItem("produtoSession", "");
         this.ativarSpinner = true;
 
         this.produtoServico.Inserir(this.produto)
@@ -56,13 +55,14 @@ export class ProdutoComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        var produtoSession = sessionStorage.getItem('ProdutoSession');
-        if (produtoSession) {
+        var produtoSession = sessionStorage.getItem("produtoSession");
+        if (produtoSession != null && produtoSession != "") {
             this.produto = JSON.parse(produtoSession);
+
+            console.log(this.produto);
         }
         else {
             this.produto = new Produto();
         }
     }
-
 }
