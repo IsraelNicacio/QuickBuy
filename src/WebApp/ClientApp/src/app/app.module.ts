@@ -1,3 +1,4 @@
+import { LojaComprarComponent } from './loja/comprar/loja.comprar.component';
 import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
 import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
 import { ProdutoComponent } from './produtos/produto.component';
@@ -32,7 +33,8 @@ registerLocaleData(localePt, 'pt');
     CadastroUsuarioComponent,
     ProdutoComponent,
     LojaPesquisaComponent,
-    LojaProdutoComponent
+    LojaProdutoComponent,
+    LojaComprarComponent
   ],
   imports: [
     BrowserModule,

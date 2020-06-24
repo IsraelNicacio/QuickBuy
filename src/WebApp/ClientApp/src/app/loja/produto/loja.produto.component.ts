@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ProdutoService } from './../../services/produto/produto.service';
 import { Produto } from './../../modelos/produto';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ import { core } from "@angular/compiler";
 export class LojaProdutoComponent implements OnInit {
 
     public produto: Produto;
-    constructor(private produtoServico: ProdutoService) {
+    constructor(private produtoServico: ProdutoService, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -20,5 +21,7 @@ export class LojaProdutoComponent implements OnInit {
             this.produto = JSON.parse(produtoDetalhe);
         }
     }
-
+    public comprar() {
+        this.router.navigate(["/loja-comprar"]);
+    }
 }

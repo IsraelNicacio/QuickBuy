@@ -11,23 +11,25 @@
 <div class="row justify-content-md-center">
     <div class="col-md-5">
         <form class="needs-validation">
-            <div class="row">
-                <div class="col-md-3 mb-3">
-                    <label for="inputCodigoInterno">Código Produto</label>
-                    <input type="text" id="inputCodigoInterno" name="CodigoInterno" placeholder="Codigo do produto" class="form-control" maxlength="60" [(ngModel)]="produto.codigoInterno" #CodigoInterno="ngModel" required>
 
-                    <div class="invalid-feedback" *ngIf="CodigoInterno.invalid && (CodigoInterno.dirty || CodigoInterno.touched)">
-                        <div *ngIf="CodigoInterno.errors.required"><b>Codigo do produto Preencimento Obrigatorio</b></div>
-                    </div>
-                </div>
-                <div class="col-md-9 mb-3">
-                    <label for="inputDescricao">Descrição Produto</label>
-                    <input type="text" id="inputDescricao" name="Descricao" placeholder="Descricao do produto" class="form-control" maxlength="120" [(ngModel)]="produto.descricao" #Descricao="ngModel" required>
-                    <div class="invalid-feedback" *ngIf="Descricao.invalid && (Descricao.dirty || Descricao.touched)">
-                        <div *ngIf="Descricao.errors.required"><b>Descricao do produto Preencimento Obrigatorio</b></div>
-                    </div>
+            <div class="mb-3">
+                <label for="inputCodigoInterno">Código Produto</label>
+                <input type="text" id="inputCodigoInterno" name="CodigoInterno" placeholder="Codigo do produto" class="form-control" maxlength="60" [(ngModel)]="produto.codigoInterno" #CodigoInterno="ngModel" required>
+
+                <div class="invalid-feedback" *ngIf="CodigoInterno.invalid && (CodigoInterno.dirty || CodigoInterno.touched)">
+                    <div *ngIf="CodigoInterno.errors.required"><b>Codigo do produto Preencimento Obrigatorio</b></div>
                 </div>
             </div>
+
+            <div class="mb-3">
+                <label for="inputDescricao">Descrição Produto</label>
+                <!-- <input type="text" id="inputDescricao" name="Descricao" placeholder="Descricao do produto" class="form-control" maxlength="120" [(ngModel)]="produto.descricao" #Descricao="ngModel" required> -->
+                <textarea class="form-control" rows="7" id="inputDescricao" name="Descricao" placeholder="Descricao do produto" maxlength="2048" [(ngModel)]="produto.descricao" #Descricao="ngModel" required></textarea>
+                <div class="invalid-feedback" *ngIf="Descricao.invalid && (Descricao.dirty || Descricao.touched)">
+                    <div *ngIf="Descricao.errors.required"><b>Descricao do produto Preencimento Obrigatorio</b></div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-3 mb-3">
                     <label for="inputUnidadeMedida">Unidade Medida</label>
@@ -44,6 +46,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="mb-3">
                 <label for="enviarArquivo">Enviar Arquivo</label>
                 <div class="custom-file mb-3">
