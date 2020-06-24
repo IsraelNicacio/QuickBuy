@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ProdutoService } from './../../services/produto/produto.service';
 import { Produto } from './../../modelos/produto';
 import { core } from "@angular/compiler";
@@ -13,11 +14,12 @@ export class LojaPesquisaComponent implements OnInit {
 
     public produtos: Produto[];
 
-    constructor(private produtoservico: ProdutoService) {
+    constructor(private produtoservico: ProdutoService, private router: Router) {
     }
 
     abrirProduto(produto: Produto) {
-        alert(produto.Descricao);
+        sessionStorage.setItem("produtoDetalhe", JSON.stringify(produto));
+        this.router.navigate(["/loja-produto"]);
     }
 
     ngOnInit(): void {

@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col">
+        <div class="jumbotron text-center">
+            <div class="container">
+                <h1 class="display-4">Produto Detalhes</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="../../../../../../arquivos/{{produto.nomeArquivo}}">
+        </div>
+        <div class="col-md-8">
+            <div class="row mb-4">
+                <h4 class="h4">
+                    {{produto.descricao}}
+                </h4>
+            </div>
+            <div class="row mb-4">
+                <h4 class="h4">
+                    {{produto.valoUnitario | currency:"BRL":"symbol"}}
+                </h4>
+            </div>
+
+            <div class="row mb-4">
+                <button type="submit" class="btn btn-danger btn-lg">Comprar</button>
+            </div>
+        </div>
+    </div>
+</div>
