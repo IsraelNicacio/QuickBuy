@@ -16,6 +16,10 @@ export class LojaPesquisaComponent implements OnInit {
     constructor(private produtoservico: ProdutoService) {
     }
 
+    abrirProduto(produto: Produto) {
+        alert(produto.Descricao);
+    }
+
     ngOnInit(): void {
         this.produtoservico.RecuperarColecaoProdutos()
             .subscribe(

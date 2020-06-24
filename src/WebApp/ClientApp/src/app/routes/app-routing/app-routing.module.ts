@@ -1,3 +1,4 @@
+import { LojaProdutoComponent } from './../../loja/produto/loja.produto.component';
 import { ProdutoComponent } from './../../produtos/produto.component';
 import { CadastroUsuarioComponent } from './../../controleAcesso/usuario/cadastro.usuario.component';
 import { AuthGuardService } from './../../guards/auth-guard.service';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
+  { path: 'loja-produto', component: LojaProdutoComponent },
   {
     path: 'produto-lista', component: ProdutoListaComponent,
     // canActivate: [AuthGuardService],

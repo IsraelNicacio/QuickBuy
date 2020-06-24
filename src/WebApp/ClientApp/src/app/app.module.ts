@@ -1,3 +1,4 @@
+import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
 import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
 import { ProdutoComponent } from './produtos/produto.component';
 import { CadastroUsuarioComponent } from './controleAcesso/usuario/cadastro.usuario.component';
@@ -30,7 +31,8 @@ registerLocaleData(localePt, 'pt');
     NavMenuComponent,
     CadastroUsuarioComponent,
     ProdutoComponent,
-    LojaPesquisaComponent
+    LojaPesquisaComponent,
+    LojaProdutoComponent
   ],
   imports: [
     BrowserModule,
