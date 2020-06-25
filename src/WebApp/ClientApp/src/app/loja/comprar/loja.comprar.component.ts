@@ -1,23 +1,31 @@
+import { LojaCarrinhoCompras } from './../carrinho/loja.carrinho.compras';
 import { Produto } from './../../modelos/produto';
-import { Router } from '@angular/router';
-import { ProdutoService } from './../../services/produto/produto.service';
-import { core } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-    selector: "app-loja-comprar-component",
-    templateUrl: "./loja.comprar.component.html",
-    styleUrls: ["./loja.comprar.component.css"]
+    selector: "app-loja-comprar",
+    templateUrl: "./loja.comprar.component.html"
 })
 
 export class LojaComprarComponent implements OnInit {
+    public carrinhoCompras: LojaCarrinhoCompras;
+    public produtos: Produto[];
+    private prod: Produto
 
-    public produto: Produto;
+    constructor() {
+    }
 
-    constructor(private produtoServico: ProdutoService, private router: Router) {
+    public atualizarPreco(produto: Produto, event: Event) {
+        produto.ValoUnitario = produto.ValoUnitario * (<HTMLInputElement>event.target).valueAsNumber;
+    }
+
+    public remover(produto: Produto) {
+        this.carrinhoCompras.removerProdutos(produto);
+        this.produtos = this.carrinhoCompras.obterProdutos();
     }
 
     ngOnInit(): void {
-        
+        this.carrinhoCompras = new LojaCarrinhoCompras();
+        this.produtos = this.carrinhoCompras.obterProdutos();
     }
 }
