@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace WebApp.Controllers
 {
@@ -46,11 +47,13 @@ namespace WebApp.Controllers
             {
                 //Verifica se existe produto cadastrado
                 var produtoResult = this.produtoAsyncRepository.RecuperarCodigoProdutoAsync(produto.CodigoInterno);
+
+                Thread.Sleep(2000);
+
                 if (produtoResult != null)
                     return BadRequest("Produto com mesmo código já cadastrado na base de dados");
-
-                if(produto.Id > 0)
-                    this.produtoAsyncRepository.AdicionarAsync(produto);
+                else if(produto.Id > 0)
+                    this.produtoAsyncRepository.AtualizarAsync(produto);
                 else
                     this.produtoAsyncRepository.AdicionarAsync(produto);
 
@@ -68,6 +71,9 @@ namespace WebApp.Controllers
             try
             {
                 this.produtoAsyncRepository.RemoverAsync(produto);
+
+                Thread.Sleep(2000);
+
                 return Json(this.produtoAsyncRepository.RecuperarColecao());
             }
             catch (Exception ex)
@@ -98,7 +104,7 @@ namespace WebApp.Controllers
             var fileName    = formFile.FileName;
             var extensao    = fileName.Split(".").Last();
             var arryName    = Path.GetFileNameWithoutExtension(fileName).Take(10).ToArray();
-            var newFileName = $"{new string(arryName).Replace(" ", "-")}{DateTime.Now.Year}{DateTime.Now.Month.ToString().PadLeft(2,'0')}{DateTime.Now.Day.ToString().PadLeft(2, '0')}.{extensao}";
+            var newFileName = $"{DateTime.Now.ToString("yyyyMMddHHmmss")}_{new string(arryName).Replace(" ", "-")}.{extensao}";
             var pathFile    = $"{this.hostEnvironment.ContentRootPath}\\wwwroot\\arquivos";
             //Retorna formatacao
             return $"{pathFile}\\{newFileName}";

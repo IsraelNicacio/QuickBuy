@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .carousel-inner img {
             width: 100%;
@@ -20,10 +21,10 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid mb-2">
         <app-root></app-root>
     </div>
-    <footer class="py-1 bg-dark mt-4 fixed-bottom">
+    <footer class="py-1 bg-dark mt-6 fixed-bottom">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; IDNDev 2020</p>
         </div>
@@ -35,7 +36,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             $("#myInput").on("keyup", function() {
                 var value = $(this).val().toLowerCase();
@@ -45,15 +46,15 @@
             });
         });
 
-        function filterGrid() {
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        }
-    </script>
+        // function filterGrid() {
+        //     $("#myInput").on("keyup", function() {
+        //         var value = $(this).val().toLowerCase();
+        //         $("#myTable tr").filter(function() {
+        //             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        //         });
+        //     });
+        // }
+    </script> -->
 </body>
 
 </html>

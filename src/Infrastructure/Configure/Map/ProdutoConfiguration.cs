@@ -11,9 +11,9 @@ namespace Infrastructure.Configure.Map
             builder.HasIndex(p => p.Id).HasName("pk_Produto").IsUnique();
             builder.Property(p => p.Id).UseIdentityAlwaysColumn();
             builder.Property(p => p.Id).ValueGeneratedOnAdd();
-            builder.Property(p => p.CodigoInterno).HasMaxLength(60).IsRequired();
-            builder.Property(p => p.Descricao).HasMaxLength(120).IsRequired();
-            builder.Property(p => p.UnidadeMedida).HasMaxLength(6).IsRequired();
+            builder.Property(p => p.CodigoInterno).HasMaxLength(512).IsRequired();
+            builder.Property(p => p.Descricao).HasMaxLength(2048).IsRequired();
+            builder.Property(p => p.UnidadeMedida).HasMaxLength(20).IsRequired();
             builder.Property(p => p.ValoUnitario).HasColumnType("decimal(15,2)").IsRequired();
             builder.Property(p => p.NomeArquivo).HasMaxLength(120);
         }

@@ -1,10 +1,13 @@
+import { LojaComprarComponent } from './loja/comprar/loja.comprar.component';
+import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
+import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
 import { ProdutoComponent } from './produtos/produto.component';
 import { CadastroUsuarioComponent } from './controleAcesso/usuario/cadastro.usuario.component';
 import { ProdutoService } from './services/produto/produto.service';
 import { PessoaService } from './services/pessoa/pessoa.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 
@@ -14,6 +17,11 @@ import { LoginComponent } from './controleAcesso/login/login.component';
 import { AppRoutingModule } from './routes/app-routing/app-routing.module';
 import { ProdutoListaComponent } from './produtos/produto-lista/produto-lista.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import { TruncateModule } from 'ng2-truncate';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -23,16 +31,23 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     ProdutoListaComponent,
     NavMenuComponent,
     CadastroUsuarioComponent,
-    ProdutoComponent
+    ProdutoComponent,
+    LojaPesquisaComponent,
+    LojaProdutoComponent,
+    LojaComprarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    TruncateModule
   ],
   providers: [
-    AuthGuardService, PessoaService, ProdutoService
+    AuthGuardService,
+    PessoaService,
+    ProdutoService,
+    { provide: LOCALE_ID, useValue: 'pt' }
   ],
   bootstrap: [AppComponent]
 })

@@ -10,57 +10,72 @@
 
 <div class="row justify-content-md-center">
     <div class="col-md-5">
-        <form class="needs-validation" novalidate="">
-            <div class="row">
-                <div class="col-md-3 mb-3">
-                    <label for="codigoProduto">Codigo Produto</label>
-                    <input type="text" name="codigoProduto" id="codigoProduto" class="form-control" [ngClass]="
-                    {
-                        'is-invalid': codigoProduto.invalid && (codigoProduto.dirty || codigoProduto.touched),
-                        'is-valid': codigoProduto.valid && (codigoProduto.dirty || codigoProduto.touched)
-                    }
-                    " [(ngModel)]="produto.CodigoInterno" #codigoProduto="ngModel" maxlength="60" required>
-                </div>
-                <div class="col-md-9 mb-3">
-                    <label for="descricaoProduto">Descrição Produto</label>
-                    <input type="text" name="descricaoProduto" id="descricaoProduto" class="form-control" [ngClass]="
-                    {
-                    'is-invalid': descricaoProduto.invalid && (descricaoProduto.dirty || descricaoProduto.touched),
-                    'is-valid': descricaoProduto.valid && (descricaoProduto.dirty || descricaoProduto.touched)
-                    }
-                    " [(ngModel)]="produto.Descricao" #descricaoProduto="ngModel" maxlength="60" required>
+        <form class="needs-validation">
+
+            <div class="mb-3">
+                <label for="inputCodigoInterno">Código Produto</label>
+                <input type="text" id="inputCodigoInterno" name="CodigoInterno" placeholder="Codigo do produto" class="form-control" maxlength="60" [(ngModel)]="produto.codigoInterno" #CodigoInterno="ngModel" required>
+
+                <div class="invalid-feedback" *ngIf="CodigoInterno.invalid && (CodigoInterno.dirty || CodigoInterno.touched)">
+                    <div *ngIf="CodigoInterno.errors.required"><b>Codigo do produto Preencimento Obrigatorio</b></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3 mb-3">
-                    <label for="unidadeMedida">Unidade Medida</label>
-                    <input type="text" name="UnidadeMedida" id="UnidadeMedida" class="form-control" [ngClass]="
-                    {
-                    'is-invalid': UnidadeMedida.invalid && (UnidadeMedida.dirty || UnidadeMedida.touched),
-                    'is-valid': UnidadeMedida.valid && (UnidadeMedida.dirty || UnidadeMedida.touched)
-                    }
-                    " [(ngModel)]="produto.UnidadeMedida" #UnidadeMedida="ngModel" style="text-transform: uppercase;" maxlength="20" required>
-                </div>
-                <div class="col-md-9 mb-3">
-                    <label for="valorUnitario">Valor Unitário</label>
-                    <input type="number" name="ValoUnitario" id="ValoUnitario" class="form-control" [ngClass]="
-                    {
-                    'is-invalid': ValoUnitario.invalid && (ValoUnitario.dirty || ValoUnitario.touched),
-                    'is-valid': ValoUnitario.valid && (ValoUnitario.dirty || ValoUnitario.touched)
-                    }
-                    " [(ngModel)]="produto.ValoUnitario" #ValoUnitario="ngModel" min="0,00" step="any" placeholder="0,00" required>
+
+            <div class="mb-3">
+                <label for="inputDescricao">Descrição Produto</label>
+                <!-- <input type="text" id="inputDescricao" name="Descricao" placeholder="Descricao do produto" class="form-control" maxlength="120" [(ngModel)]="produto.descricao" #Descricao="ngModel" required> -->
+                <textarea class="form-control" rows="7" id="inputDescricao" name="Descricao" placeholder="Descricao do produto" maxlength="2048" [(ngModel)]="produto.descricao" #Descricao="ngModel" required></textarea>
+                <div class="invalid-feedback" *ngIf="Descricao.invalid && (Descricao.dirty || Descricao.touched)">
+                    <div *ngIf="Descricao.errors.required"><b>Descricao do produto Preencimento Obrigatorio</b></div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="inputUnidadeMedida">Unidade Medida</label>
+                    <input type="text" id="inputUnidadeMedida" name="UnidadeMedida" placeholder="Unidade Medida" class="form-control" maxlength="20" [(ngModel)]="produto.unidadeMedida" #UnidadeMedida="ngModel" required>
+                    <div class="invalid-feedback" *ngIf="UnidadeMedida.invalid && (UnidadeMedida.dirty || UnidadeMedida.touched)">
+                        <div *ngIf="UnidadeMedida.errors.required"><b>Unidade Medida do produto Preencimento Obrigatorio</b></div>
+                    </div>
+                </div>
+                <div class="col-md-9 mb-3">
+                    <label for="inputValoUnitario">Valor Unitário</label>
+                    <input type="number" name="ValoUnitario" id="inputValoUnitario" placeholder="Valo Unitario" class="form-control" [(ngModel)]="produto.valoUnitario" #ValoUnitario="ngModel" required>
+                    <div class="invalid-feedback" *ngIf="ValoUnitario.invalid && (ValoUnitario.dirty || ValoUnitario.touched)">
+                        <div *ngIf="ValoUnitario.errors.required"><b>Valo Unitario do produto Preencimento Obrigatorio</b></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label for="enviarArquivo">Enviar Arquivo</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="enviarArquivo" lang="pt" (click)="inputChange($event.target.files)">
-                    <label class="custom-file-label" for="enviarArquivo">Selecionar Arquivo</label>
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" placeholder="Imagem" id="inputFile" (change)="inputChange($event.target.files)">
+                    <label class="custom-file-label" for="inputFile">{{ produto.NomeArquivo }}</label>
                 </div>
             </div>
 
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="cadastrar()">Cadastrar</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="cadastrar()" [disabled]="ativarSpinner">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
+                Cadastrar
+            </button>
+
+            <div class="alert alert-success mt-2" *ngIf="produtoCadastrado">
+                <div class="row justify-content-md-center">
+                    <p>
+                        Produto cadastrado com sucesso
+                        <a [routerLink]="[ '/produto-lista' ]">Ir para Lista de Produtos</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="alert alert-danger mt-2" *ngIf="mensagem">
+                <div class="row justify-content-md-center">
+                    {{mensagem}}
+                </div>
+            </div>
+
         </form>
     </div>
 </div>
