@@ -17,7 +17,7 @@ export class PedidoService {
         this._baseUrl = baseUrl;
     }
 
-    public efetivaCompra(pedido: Pedido): Observable<number> {
+    public efetivarCompra(pedido: Pedido): Observable<number> {
         return this.http.post<number>(this._baseUrl + "api/pedido", JSON.stringify(pedido), { headers: this.headers })
     }
 }

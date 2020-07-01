@@ -5,4 +5,6 @@ export class Produto{
     public UnidadeMedida: string;
     public ValoUnitario: number;
     public NomeArquivo: string;
+    public precoOriginal: number;
+    public quantidade: number;
 }

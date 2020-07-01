@@ -1,3 +1,4 @@
+import { PedidoService } from './services/pedidos/pedido.servide';
 import { LojaComprarComponent } from './loja/comprar/loja.comprar.component';
 import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
 import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
@@ -47,6 +48,7 @@ registerLocaleData(localePt, 'pt');
     AuthGuardService,
     PessoaService,
     ProdutoService,
+    PedidoService,
     { provide: LOCALE_ID, useValue: 'pt' }
   ],
   bootstrap: [AppComponent]
