@@ -1,3 +1,4 @@
+import { LojaCompraRealizadaComponent } from './../../loja/comprar/loja.compra.realizada.component';
 import { LojaComprarComponent } from './../../loja/comprar/loja.comprar.component';
 import { LojaProdutoComponent } from './../../loja/produto/loja.produto.component';
 import { ProdutoComponent } from './../../produtos/produto.component';
@@ -19,18 +20,27 @@ const routes: Routes = [
   { path: "loja-comprar", component: LojaComprarComponent },
   {
     path: 'produto-lista', component: ProdutoListaComponent,
-    // canActivate: [AuthGuardService],
-    // children: [
-    //   { path: 'produto-lista', component: ProdutoListaComponent }
-    // ]
+    canActivate: [AuthGuardService],
+    children: [
+      { path: 'produto-lista', component: ProdutoListaComponent }
+    ]
   },
   {
-    path: 'produto', component: ProdutoComponent
-    // canActivate: [AuthGuardService],
-    // children: [
-    //   { path: 'produto', component: ProdutoComponent }
-    // ]
+    path: 'produto', component: ProdutoComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      { path: 'produto', component: ProdutoComponent }
+    ]
   },
+  { path: 'loja-produto', component: LojaProdutoComponent },
+  {
+    path: 'loja-comprar', component: LojaComprarComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      { path: 'loja-comprar', component: LojaComprarComponent }
+    ]
+  },
+  { path: "compra-realizada-sucesso", component: LojaCompraRealizadaComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

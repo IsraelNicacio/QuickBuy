@@ -25,11 +25,14 @@
                 <div class="nav-item dropdown" *ngIf="isAuthenticated()">
                     <a class="nav-link dropdown-toggle navbarDropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{pessoa.nome}}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="isAuthenticated()">
-                        <a class="dropdown-item" href="#">Meus Pedidos</a>
                         <a class="dropdown-item" [routerLink]="[ '/cadastro-usuario']">Meu Cadastro</a>
                         <a class="dropdown-item" (click)="logout()">Sair</a>
                     </div>
                 </div>
+
+                <a class="navbar-brand col-sm-3 col-md-2 mr-0" [routerLink]='["/loja-comprar"]'>
+                    <img src="assets/img/shopping-06-512.png" style="width:32px; height:32px;" />
+                </a>
             </div>
         </div>
     </nav>

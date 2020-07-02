@@ -1,3 +1,4 @@
+import { LojaCompraRealizadaComponent } from './loja/comprar/loja.compra.realizada.component';
 import { PedidoService } from './services/pedidos/pedido.servide';
 import { LojaComprarComponent } from './loja/comprar/loja.comprar.component';
 import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
@@ -35,7 +36,8 @@ registerLocaleData(localePt, 'pt');
     ProdutoComponent,
     LojaPesquisaComponent,
     LojaProdutoComponent,
-    LojaComprarComponent
+    LojaComprarComponent,
+    LojaCompraRealizadaComponent
   ],
   imports: [
     BrowserModule,

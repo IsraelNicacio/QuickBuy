@@ -14,54 +14,58 @@ export class ProdutoComponent implements OnInit {
     public arquivoSelecionado: File;
     public ativarSpinner: boolean;
     public mensagem: string;
-    public produtoCadastrado: boolean;
-    public returnUrl: any;
 
     constructor(private router: Router, private produtoServico: ProdutoService) {
     }
 
     public inputChange(files: FileList) {
         this.arquivoSelecionado = files.item(0);
+        this.ativarSpinner = true;
         this.produtoServico.enviarArquivo(this.arquivoSelecionado)
             .subscribe(
                 nomeArquivo => {
                     this.produto.NomeArquivo = nomeArquivo;
+                    console.log(nomeArquivo);
+                    this.ativarSpinner = false;
                 },
                 err => {
                     console.log(err);
-                    this.mensagem = err.error;
+                    this.ativarSpinner = false;
                 }
             );
     }
 
     public cadastrar() {
 
-        sessionStorage.setItem("produtoSession", "");
-        this.ativarSpinner = true;
-
+        this.ativarEspera();
         this.produtoServico.Inserir(this.produto)
             .subscribe(
-                data => {
-                    this.ativarSpinner = false;
-                    this.produtoCadastrado = true;
-                    this.mensagem = "";
+                produtoJson => {
+                    console.log(produtoJson);
+                    this.desativarEspera();
+                    this.router.navigate(['/pesquisar-produto']);
                 },
-                err => {
-                    console.log(err.error);
-                    this.ativarSpinner = false;
-                    this.mensagem = err.error;
+                e => {
+                    console.log(e.error);
+                    this.mensagem = e.error;
+                    this.desativarEspera();
                 }
             );
     }
 
-    ngOnInit(): void {
-        var produtoSession = sessionStorage.getItem("produtoSession");
-        if (produtoSession != null && produtoSession != "") {
-            this.produto = JSON.parse(produtoSession);
+    public ativarEspera() {
+        this.ativarSpinner = true;
+    }
 
-            console.log(this.produto);
-        }
-        else {
+    public desativarEspera() {
+        this.ativarSpinner = false;
+    }
+
+    ngOnInit(): void {
+        var produtoSession = sessionStorage.getItem('produtoSession')
+        if (produtoSession) {
+            this.produto = JSON.parse(produtoSession);
+        } else {
             this.produto = new Produto();
         }
     }

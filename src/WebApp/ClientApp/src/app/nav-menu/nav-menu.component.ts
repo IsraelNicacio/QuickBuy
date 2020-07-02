@@ -1,3 +1,4 @@
+import { LojaCarrinhoCompras } from './../loja/carrinho/loja.carrinho.compras';
 import { Pessoa } from './../modelos/pessoa';
 import { PessoaService } from 'src/app/services/pessoa/pessoa.service';
 import { Router } from '@angular/router';
@@ -10,8 +11,9 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   public isExpanded = false;
+  public carrinhoCompras: LojaCarrinhoCompras;
 
-  public get pessoa() : Pessoa {
+  public get pessoa(): Pessoa {
     return this.pessoaService.pessoa;
   }
 
@@ -26,12 +28,16 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
-  isAuthenticated():boolean{
+  isAuthenticated(): boolean {
     return this.pessoaService.pessoa_autenticada();
   }
 
-  logout(){
+  logout() {
     this.pessoaService.limpa_sessao();
     this.router.navigate(['/']);
+  }
+
+  public temItensCarrinhoCompras(): boolean {
+    return this.carrinhoCompras.temItensCarrinhoCompras();
   }
 }
