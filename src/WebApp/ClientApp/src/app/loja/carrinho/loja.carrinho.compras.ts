@@ -31,7 +31,7 @@ export class LojaCarrinhoCompras {
         var produtoLocaStorage = localStorage.getItem("produtoLocaStorage");
         if (produtoLocaStorage) {
             this.produtos = JSON.parse(produtoLocaStorage);
-            this.produtos = this.produtos.filter(p => p.Id != produto.Id);
+            this.produtos = this.produtos.filter(p => p.id != produto.id);
             localStorage.setItem("produtoLocaStorage", JSON.stringify(this.produtos));
         }
     }

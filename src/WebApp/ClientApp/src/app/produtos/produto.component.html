@@ -51,7 +51,7 @@
                 <label for="enviarArquivo">Enviar Arquivo</label>
                 <div class="custom-file mb-3">
                     <input type="file" class="custom-file-input" placeholder="Imagem" id="inputFile" (change)="inputChange($event.target.files)">
-                    <label class="custom-file-label" for="inputFile">{{ produto.NomeArquivo }}</label>
+                    <label class="custom-file-label" for="inputFile">{{ produto.nomeArquivo }}</label>
                 </div>
             </div>
 
@@ -61,14 +61,14 @@
                 Cadastrar
             </button>
 
-            <div class="alert alert-success mt-2" *ngIf="produtoCadastrado">
+            <!-- <div class="alert alert-success mt-2" *ngIf="produtoCadastrado">
                 <div class="row justify-content-md-center">
                     <p>
                         Produto cadastrado com sucesso
                         <a [routerLink]="[ '/produto-lista' ]">Ir para Lista de Produtos</a>
                     </p>
                 </div>
-            </div>
+            </div> -->
 
             <div class="alert alert-danger mt-2" *ngIf="mensagem">
                 <div class="row justify-content-md-center">

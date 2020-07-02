@@ -15,18 +15,35 @@ import { Component, OnInit } from "@angular/core";
 export class LojaComprarComponent implements OnInit {
     public carrinhoCompras: LojaCarrinhoCompras;
     public produtos: Produto[];
-    private prod: Produto
+    public total: number;
 
     constructor(private pessoaServico: PessoaService, private pedidoServico: PedidoService, private router: Router) {
     }
 
-    public atualizarPreco(produto: Produto, event: Event) {
-        produto.ValoUnitario = produto.ValoUnitario * (<HTMLInputElement>event.target).valueAsNumber;
+    public atualizarPreco(produto: Produto, quantidade: number) {
+
+        if (!produto.precoOriginal) {
+            produto.precoOriginal = produto.valoUnitario;
+        }
+        if (quantidade <= 0) {
+            quantidade = 1;
+            produto.quantidade = quantidade;
+        }
+
+        produto.valoUnitario = produto.precoOriginal * quantidade;
+
+        this.carrinhoCompras.atualizar(this.produtos);
+        this.atualizarTotal();
+    }
+
+    public atualizarTotal() {
+        this.total = this.produtos.reduce((acc, produto) => acc + produto.valoUnitario, 0);
     }
 
     public remover(produto: Produto) {
         this.carrinhoCompras.removerProduto(produto);
         this.produtos = this.carrinhoCompras.obterProdutos();
+        this.atualizarTotal();
     }
 
     public efetivarCompra() {
@@ -37,7 +54,7 @@ export class LojaComprarComponent implements OnInit {
                     console.log(pedidoId);
                     sessionStorage.setItem("pedidoId", pedidoId.toString());
                     this.produtos = [];
-                    this.carrinhoCompras.limparCarrinhoCompras();
+                    this.carrinhoCompras.limparCarrinhoCompras();                   
                     this.router.navigate(["/compra-realizada-sucesso"]);
                 },
                 e => {
@@ -54,7 +71,7 @@ export class LojaComprarComponent implements OnInit {
 
         for (let produto of this.produtos) {
             let itemPedido = new ItemPedido();
-            itemPedido.produtoId = produto.Id;
+            itemPedido.produtoId = produto.id;
 
             if (!produto.quantidade)
                 produto.quantidade = 1;

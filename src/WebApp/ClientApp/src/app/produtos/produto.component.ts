@@ -24,7 +24,7 @@ export class ProdutoComponent implements OnInit {
         this.produtoServico.enviarArquivo(this.arquivoSelecionado)
             .subscribe(
                 nomeArquivo => {
-                    this.produto.NomeArquivo = nomeArquivo;
+                    this.produto.nomeArquivo = nomeArquivo;
                     console.log(nomeArquivo);
                     this.ativarSpinner = false;
                 },

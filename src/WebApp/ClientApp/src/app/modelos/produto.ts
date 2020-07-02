@@ -1,10 +1,10 @@
 export class Produto{
-    public Id: number;
-    public CodigoInterno: string;
-    public Descricao: string;
-    public UnidadeMedida: string;
-    public ValoUnitario: number;
-    public NomeArquivo: string;
+    public id: number;
+    public codigoInterno: string;
+    public descricao: string;
+    public unidadeMedida: string;
+    public valoUnitario: number;
+    public nomeArquivo: string;
     public precoOriginal: number;
     public quantidade: number;
 }
